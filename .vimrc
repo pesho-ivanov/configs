@@ -13,6 +13,9 @@
 map <C-P> gk
 map <C-N> gj
 
+set t_Co=256
+syntax enable
+set background=dark
 colorscheme murphy
 set number
 set wrap
@@ -23,8 +26,8 @@ set wrap
 set autochdir
 
 " highlighting the 80+ chars
-" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-" match OverLength /\%81v.\+/
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength /\%801v.\+/
 
 set ts=8
 set sts=2
@@ -42,7 +45,7 @@ set hlsearch
 set incsearch
 filetype plugin indent on
 
-set keymap=bulgarian-phonetic-pesho
+"set keymap=bulgarian-phonetic-pesho
 set iminsert=0
 set imsearch=-1
 
@@ -58,16 +61,34 @@ endif
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set laststatus=2    " always show status line
 
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_WinWidth = 50
-map <F4> :TlistToggle<cr>
+"let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+"let Tlist_WinWidth = 50
+"map <F4> :TlistToggle<cr>
 
-map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
-"map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ~/workspace/cgal/workingcopy<CR>
-set tags+=~/workspace/cgal/workingcopy
+map <F8> :!/usr/bin/ctags -R --fields=+iaS --extra=+q .
+
+"g<C-]> shows different tags with the same name
+map <C-]> g<C-]>
+
+set tags=tags;/
+"map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
 set noswapfile
 
 autocmd FileType c set omnifunc=ccomplete#Complete
 
 set wildmode=longest:full
 set wildmenu
+
+" SPAdes specific
+let chimeraPath="~/workspace/algorithmic-biology/assembler/src/test/debruijn_tools/tools.cpp"
+command! Chimerae execute "e" . chimeraPath
+command! Chimeratabe execute "tabe" . chimeraPath
+
+let debruijnPath="~/workspace/algorithmic-biology/assembler/src/debruijn"
+command! Debruijne execute "e" . debruijnPath 
+command! Debruijntabe execute "tabe" . debruijnPath 
+
+let SPAdesPath="~/workspace/algorithmic-biology/assembler"
+command! SPAdese execute "e" . SPAdesPath 
+command! SPAdestabe execute "tabe" . SPAdesPath 
+
