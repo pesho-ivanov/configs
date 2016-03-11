@@ -45,7 +45,11 @@ set hlsearch
 set incsearch
 filetype plugin indent on
 
-"set keymap=bulgarian-phonetic-pesho
+"To set Bulgarian/Russian phonetic:
+" -- copy http://www.math.bas.bg/bantchev/vim/bulgarian-phonetic.vim to ~/.vim/keymap/
+" Press Ctrl+6 in insert mode for keymap switch
+" set keymap=bulgarian-phonetic
+
 set iminsert=0
 set imsearch=-1
 
